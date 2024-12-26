@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="../app/css/style-register.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Kembali</a>
+
+        <h1>REGISTER</h1>
+        <form method="POST">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <input type="password" name="confirm-password" placeholder="Konfirmasi Password" required>
+            <button type="submit">Daftar</button>
+            <h4>-OR-</h4>
+            <button type="button" class="register-btn" onclick="navigateToRegister()">Sudah Punya Akun?</button>
+        </form>
+    </div>
+    <script>
+        function navigateToRegister() {
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html>

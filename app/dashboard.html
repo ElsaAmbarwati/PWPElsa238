@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background-color: #d9b3e6;
+            position: fixed;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .sidebar input[type="text"] {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .sidebar button {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: left;
+        }
+
+        .sidebar button:hover {
+            background-color: #e6d4f0;
+        }
+
+        .main {
+            margin-left: 250px;
+            padding: 20px;
+        }
+
+        .main h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        .actions button {
+            margin-right: 5px;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .actions .edit {
+            background-color: #f0ad4e;
+            color: white;
+        }
+
+        .actions .delete {
+            background-color: #d9534f;
+            color: white;
+        }
+
+        .actions .add {
+            background-color: #5cb85c;
+            color: white;
+        }
+
+        .actions button:hover {
+            opacity: 0.8;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <input type="text" placeholder="Username">
+        <button>Dashboard</button>
+        <button>Tambahkan Pengguna</button>
+    </div>
+
+    <div class="main">
+        <h1>Dashboard</h1>
+        <div class="actions">
+            <button class="add">Tambah Pengguna</button>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nama Pengguna</th>
+                    <th>Email</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>John Doe</td>
+                    <td>john.doe@example.com</td>
+                    <td class="actions">
+                        <button class="edit">Edit</button>
+                        <button class="delete">Hapus</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Jane Smith</td>
+                    <td>jane.smith@example.com</td>
+                    <td class="actions">
+                        <button class="edit">Edit</button>
+                        <button class="delete">Hapus</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
