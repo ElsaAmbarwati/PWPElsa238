@@ -3,12 +3,19 @@
     "development"
   ],
   "hints": {
-    "axe/name-role-value": [
+    "axe/language": [
       "default",
       {
-        "button-name": "off"
+        "html-has-lang": "off"
       }
     ],
-    "button-type": "off"
+    "meta-viewport": "off",
+    "axe/forms": [
+      "default",
+      {
+        "label": "off"
+      }
+    ],
+    "no-inline-styles": "off"
   }
 }
