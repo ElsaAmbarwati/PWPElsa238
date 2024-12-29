@@ -13,17 +13,29 @@
 
         <h1>REGISTER</h1>
         <form method="POST" action="../app/proses_register.php">
-            <input type="text" name="username" placeholder="Username" required>
-            <input type="email" name="email" placeholder="Email" required>
-            <input type="password" name="password" placeholder="Password" required>
-            <input type="password" name="confirm-password" placeholder="Konfirmasi Password" required>
+            <input type="text" name="hidden-field" style="display:none">
+            <input type="password" name="fake-password-field" style="display:none">
+
+            <input type="text" name="data-username" placeholder="Username" autocomplete="off" required>
+            <input type="email" name="email" placeholder="Email" autocomplete="off" required>
+            <input type="password" name="password" placeholder="Password" autocomplete="new-password" required>
+            <input type="password" name="confirm-password" placeholder="Konfirmasi Password" autocomplete="new-password" required>
+        
+            <div class="role-selection">
+                <label for="role">Pilih Role:</label>
+                <select name="role" id="role" required>
+                    <option value="admin">Admin</option>
+                    <option value="superadmin">Superadmin</option>
+                </select>
+            </div>
             <button type="submit">Daftar</button>
             <h4>-OR-</h4>
-            <button type="button" class="register-btn" onclick="navigateToRegister()">Sudah Punya Akun?</button>
+            <button type="button" class="register-btn" onclick="navigateToLogin()">Sudah Punya Akun?</button>
         </form>
+        
     </div>
     <script>
-        function navigateToRegister() {
+        function navigateToLogin() {
             window.location.href = 'login.html';
         }
     </script>

@@ -11,15 +11,28 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    color: #333;
 }
 .container {
     background-color: #CBA8D1;
-    border-radius: 10px;
-    padding: 30px 40px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
     text-align: center;
-    width: 450px;
+    width: 90%;
+    max-width: 400px;
     position: relative;
+    animation: fadeIn 0.5s ease-in-out;
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 .back-btn {
     position: absolute;
@@ -28,11 +41,13 @@ body {
     background: none;
     border: none;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 16px;
     color: #333;
     display: flex;
     align-items: center;
     gap: 5px;
+    transition: color 0.3s ease;
+    text-decoration: none;
 }
 .back-btn i {
     font-size: 20px;
@@ -53,33 +68,62 @@ form {
 }
 input {
     padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    font-size: 14px;
+    border: 1px solid #aaa;
+    border-radius: 6px;
     width: 100%;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+input:focus {
+    border-color: #007BFF;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
 }
 button {
     padding: 10px;
     font-size: 16px;
     border: none;
-    border-radius: 5px;
+    border-radius: 6px;
     color: #fff;
     cursor: pointer;
     width: 100%;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 button[type="submit"] {
     background-color: #007BFF;
 }
 button[type="submit"]:hover {
     background-color: #0056b3;
+    transform: scale(1.02);
 }
 .register-btn {
     background-color: #28A745;
 }
 .register-btn:hover {
     background-color: #218838;
+    transform: scale(1.02);
 }
-h4 {
-    margin: 15px 0;
+
+.role-selection {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.role-selection label {
+    font-size: 14px;
+    font-weight: normal;
     color: #333;
+}
+.role-selection select {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #aaa;
+    border-radius: 6px;
+    width: 100%;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.role-selection select:focus {
+    border-color: #007BFF;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
 }

@@ -8,14 +8,14 @@
 </head>
 <body>
     <div class="mp">
-        <input type="text" placeholder="Username">
-        <button>Dashboard</button>
-        <button>Tambahkan Pengguna</button>
+        <input type="text" placeholder="Username" disabled>
+        <button id="dashboard-btn">Dashboard</button>
+        <button id="logout-btn">Logout</button>
     </div>
 
     <div class="main">
         <h1>Dashboard</h1>
-        <div class="actions">
+        <div class="actions" id="admin-actions" style="display: none;">
             <button class="add">Tambah Pengguna</button>
         </div>
         <table>
@@ -27,33 +27,15 @@
                     <th>Aksi</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="user-table">
                 <!-- Contoh data statis -->
                 <tr>
                     <td>1</td>
                     <td>user1</td>
                     <td>user1@example.com</td>
                     <td class="actions">
-                        <button class="edit">Edit</button>
-                        <button class="delete">Hapus</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>user2</td>
-                    <td>user2@example.com</td>
-                    <td class="actions">
-                        <button class="edit">Edit</button>
-                        <button class="delete">Hapus</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>user3</td>
-                    <td>user3@example.com</td>
-                    <td class="actions">
-                        <button class="edit">Edit</button>
-                        <button class="delete">Hapus</button>
+                        <button class="edit" style="display: none;">Edit</button>
+                        <button class="delete" style="display: none;">Hapus</button>
                     </td>
                 </tr>
                 <tr>
@@ -62,5 +44,27 @@
             </tbody>
         </table>
     </div>
+
+    <script>
+        // Simulasi role pengguna (superadmin/admin)
+        const role = "superadmin"; // Ubah ke "admin" untuk tes
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const adminActions = document.getElementById("admin-actions");
+            const editButtons = document.querySelectorAll(".edit");
+            const deleteButtons = document.querySelectorAll(".delete");
+
+            if (role === "superadmin") {
+                adminActions.style.display = "block";
+                editButtons.forEach(button => button.style.display = "inline-block");
+                deleteButtons.forEach(button => button.style.display = "inline-block");
+            }
+
+            document.getElementById("logout-btn").addEventListener("click", () => {
+                alert("Anda berhasil logout");
+                window.location.href = "login.html";
+            });
+        });
+    </script>
 </body>
 </html>
