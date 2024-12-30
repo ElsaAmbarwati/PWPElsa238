@@ -45,27 +45,5 @@
             </tbody>
         </table>
     </div>
-
-    <script>
-        // Simulasi role pengguna (superadmin/admin)
-        const role = "superadmin"; // Ubah ke "admin" untuk tes
-
-        document.addEventListener("DOMContentLoaded", () => {
-            const adminActions = document.getElementById("admin-actions");
-            const editButtons = document.querySelectorAll(".edit");
-            const deleteButtons = document.querySelectorAll(".delete");
-
-            if (role === "superadmin") {
-                adminActions.style.display = "block";
-                editButtons.forEach(button => button.style.display = "inline-block");
-                deleteButtons.forEach(button => button.style.display = "inline-block");
-            }
-
-            document.getElementById("logout-btn").addEventListener("click", () => {
-                alert("Anda berhasil logout");
-                window.location.href = "login.html";
-            });
-        });
-    </script>
 </body>
 </html>
