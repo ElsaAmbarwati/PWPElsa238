@@ -6,44 +6,110 @@
     <title>Dashboard</title>
     <link rel="stylesheet" href="../static/style-dashboard.css">
     <link rel="icon" href="../image/logo.png" type="image/png">
+    <script>
+        // Fungsi untuk meminta konfirmasi sebelum logout
+        function confirmLogout(event) {
+            const confirmation = confirm("Apakah Anda yakin ingin logout?");
+            if (!confirmation) {
+                event.preventDefault(); // Batalkan logout jika pengguna memilih 'Cancel'
+            }
+        }
+
+        // Fungsi untuk memfilter pengguna berdasarkan input pencarian
+        function filterUsers() {
+            const searchInput = document.getElementById("search-bar").value.toLowerCase();
+            const table = document.querySelector("table tbody");
+            const rows = table.getElementsByTagName("tr");
+
+            for (let i = 0; i < rows.length; i++) {
+                const usernameCell = rows[i].getElementsByTagName("td")[1]; // Kolom Nama Pengguna
+                const username = usernameCell.textContent.toLowerCase();
+
+                if (username.includes(searchInput)) {
+                    rows[i].style.display = ""; // Tampilkan baris jika cocok
+                } else {
+                    rows[i].style.display = "none"; // Sembunyikan baris jika tidak cocok
+                }
+            }
+        }
+    </script>
 </head>
 <body>
+    <!-- Sidebar -->
     <div class="mp">
-        <input type="text" placeholder="Username" disabled>
-        <button id="dashboard-btn">Dashboard</button>
-        <button id="logout-btn">Logout</button>
+        <!-- Kotak untuk menampilkan username -->
+        <input type="text" id="username-display" value="{{ session['username'] }}" disabled>
+
+        <!-- Tombol Dashboard -->
+        <input type="text" id="dashboard-display" value="Dashboard" readonly>
+
+        <!-- Tombol Logout -->
+        <form action="{{ url_for('logout') }}" method="GET" style="display:inline;" onsubmit="confirmLogout(event)">
+            <button type="submit" id="logout-btn">Logout</button>
+        </form>
     </div>
 
+    <!-- Konten Utama -->
     <div class="main">
-        <h1>Dashboard</h1>
-        <div class="actions" id="admin-actions" style="display: none;">
-            <button class="add">Tambah Pengguna</button>
+        <!-- Ucapan Sambutan -->
+        <div class="welcome-message">
+            <h2>Hi, {{ session['username'] }}</h2>
+            <p>SELAMAT DATANG DIMANAJEMEN PENGGUNA</p>
         </div>
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nama Pengguna</th>
-                    <th>Email</th>
-                    <th>Aksi</th>
-                </tr>
-            </thead>
-            <tbody id="user-table">
-                <!-- Contoh data statis -->
-                <tr>
-                    <td>1</td>
-                    <td>user1</td>
-                    <td>user1@example.com</td>
-                    <td class="actions">
-                        <button class="edit" style="display: none;">Edit</button>
-                        <button class="delete" style="display: none;">Hapus</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="4">Tidak ada data pengguna</td>
-                </tr>
-            </tbody>
-        </table>
+        <h1>Dashboard</h1>
+
+        <!-- Form Pencarian -->
+        <div class="search-container">
+            <input type="text" id="search-bar" placeholder="Cari pengguna..." onkeyup="filterUsers()">
+        </div>
+
+        <!-- Tombol Tambah Pengguna -->
+        {% if session['role'] == 'superadmin' %}
+        <div class="actions">
+            <form action="{{ url_for('tambah') }}" method="GET" style="display:inline;">
+                <button type="submit" class="add">Tambah Pengguna</button>
+            </form>
+        </div>
+        {% endif %}
+
+        <!-- Kontainer Tabel Scrollable -->
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama Pengguna</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                    <tr>
+                        <!-- Menggunakan forloop.counter untuk nomor urut -->
+                        <td>{{ loop.index }}</td>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.role }}</td>
+                        <td class="actions">
+                            <!-- Tombol Edit -->
+                            <form action="{{ url_for('edit', id=user.id) }}" method="GET" style="display:inline;">
+                                <button type="submit" class="edit">Edit</button>
+                            </form>
+            
+                            <!-- Tombol Hapus -->
+                            {% if session['role'] == 'superadmin' %}
+                            <form action="{{ url_for('delete_user', id=user.id) }}" method="POST" style="display:inline;">
+                                <button type="submit" class="delete">Hapus</button>
+                            </form>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 </body>
 </html>

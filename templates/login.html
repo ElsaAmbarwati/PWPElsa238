@@ -4,16 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Admin</title>
-    <link rel="stylesheet" href="../static/style-login.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style-login.css') }}">
     <link rel="icon" href="../image/logo.png" type="image/png">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
 </head>
 <body>
     <div class="container">
-        <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Kembali</a>
-
+        <a href="{{ url_for('index') }}" class="back-btn"><i class="fas fa-arrow-left"></i> Kembali</a>
         <h1>Login Admin</h1>
-        <form method="POST" action="../app/proses_login.php">
+        <form method="POST" action="{{ url_for('login') }}">
             <input type="email" name="email" placeholder="Email" required>
             <input type="password" name="password" placeholder="Kata Sandi" required>
             <button type="submit">Login</button>
@@ -23,7 +22,7 @@
     </div>
     <script>
         function navigateToRegister() {
-            window.location.href = 'register.html';
+            window.location.href = "{{ url_for('register') }}";
         }
     </script>
 </body>

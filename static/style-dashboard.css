@@ -1,38 +1,58 @@
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
 }
 
 .mp {
     width: 250px;
     height: 100vh;
-    background-color: #d9b3e6;
+    background-color: #8A4B95;
     position: fixed;
     display: flex;
     flex-direction: column;
     padding: 20px;
     box-sizing: border-box;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }
 
 .mp input[type="text"] {
     margin-bottom: 20px;
-    padding: 10px;
-    border: 1px solid #ccc;
+    padding: 12px;
+    border: 1px solid #8A4B95;
     border-radius: 5px;
+    background-color: #8A4B95;
+    font-size: 16px;
+    text-align: center;
+    font-weight: bold;
+    color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Menghilangkan garis biru saat fokus */
+.mp input[type="text"]:focus, .mp button:focus, input:focus, button:focus {
+    outline: none;
 }
 
 .mp button {
-    margin-bottom: 10px;
-    padding: 10px;
+    margin-bottom: 15px;
+    padding: 12px;
     background-color: white;
     border: 1px solid #ccc;
     border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #8A4B95;
     cursor: pointer;
-    text-align: left;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .mp button:hover {
     background-color: #e6d4f0;
+    color: #5c3b73;
+    transform: scale(1.05);
 }
 
 .main {
@@ -40,49 +60,123 @@ body {
     padding: 20px;
 }
 
-.main h1 {
-    font-size: 24px;
+.welcome-message {
+    background-color: #f4e7ff; /* Warna ungu pastel */
+    padding: 20px;
+    border-radius: 10px;
     margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-table {
+.welcome-message h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #6E2B8F; /* Warna ungu gelap */
+    margin: 0;
+}
+
+.welcome-message p {
+    font-size: 16px;
+    color: #555;
+    margin: 5px 0 0;
+}
+
+.main h1 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #8A4B95;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.search-container {
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-container input {
+    padding: 12px;
+    width: 100%;
+    max-width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.search-container input:focus {
+    outline: none;
+    border-color: #8A4B95;
+    box-shadow: 0 2px 5px rgba(138, 75, 149, 0.3);
+}
+
+.table-container {
+    max-height: 400px; /* Atur tinggi maksimum tabel */
+    overflow-y: auto; /* Aktifkan scroll vertikal */
+    margin-top: 20px;
+    border: 1px solid #ccc; /* Tambahkan border untuk membedakan area scroll */
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.table-container table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
 }
 
-table, th, td {
-    border: 1px solid #ccc;
-}
-
-th, td {
-    padding: 10px;
+.table-container th, .table-container td {
+    padding: 14px;
     text-align: left;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    background-color: white;
+}
+
+.table-container th {
+    background-color: #8A4B95;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.table-container tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.table-container tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer; /* Menambahkan efek pointer */
 }
 
 .actions button {
-    margin-right: 5px;
-    padding: 5px 10px;
+    margin-right: 10px;
+    padding: 10px 14px;
     border: none;
-    border-radius: 3px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
     cursor: pointer;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
 }
 
 .actions .edit {
     background-color: #f0ad4e;
-    color: white;
 }
 
 .actions .delete {
-    background-color: #d9534f;
-    color: white;
+    background-color: #ba2d2d;
 }
 
 .actions .add {
     background-color: #5cb85c;
-    color: white;
 }
 
 .actions button:hover {
-    opacity: 0.8;
+    opacity: 0.85;
+    transform: scale(1.05);
 }

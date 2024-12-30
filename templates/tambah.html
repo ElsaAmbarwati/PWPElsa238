@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tambah Pengguna</title>
+    <link rel="stylesheet" href="../static/style-tambah.css">
+    <link rel="icon" href="../image/logo.png" type="image/png">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <a href="{{ url_for('dashboard') }}" class="back-btn"><i class="fas fa-arrow-left"></i>Kembali</a>
+        <h1>Tambah Pengguna</h1>
+        <form method="POST" action="{{ url_for('tambah') }}" autocomplete="off">
+            <input type="text" style="display:none">
+            <input type="password" style="display:none">
+            <input type="text" name="username" placeholder="Username" autocomplete="off" required>
+            <input type="email" name="email" placeholder="Email" autocomplete="off" required>
+            <input type="password" name="password" placeholder="Password" autocomplete="new-password" required>
+            <div class="role-selection">
+                <label for="role">Pilih Role:</label>
+                <select name="role" id="role" required>
+                    <option value="admin">Admin</option>
+                    <option value="superadmin">Superadmin</option>
+                </select>
+            </div>
+            <button type="submit">Tambahkan</button>
+        </form>                
+    </div>
+</body>
+</html>

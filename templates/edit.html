@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Pengguna</title>
+    <link rel="stylesheet" href="../static/style-edit.css">
+    <link rel="icon" href="../image/logo.png" type="image/png">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <a href="{{ url_for('dashboard') }}" class="back-btn"><i class="fas fa-arrow-left"></i>Kembali</a>
+        <h1>Edit Pengguna</h1>
+        <form method="POST" action="{{ url_for('edit', id=user.id) }}">
+            <input type="text" name="username" placeholder="Username Baru" autocomplete="off" required>
+            <input type="email" name="email"  placeholder="Email Baru" autocomplete="off" required>
+            <div class="role-selection">
+                <label for="role">Pilih Role Baru:</label>
+                <select name="role" id="role" required>
+                    <option value="admin" {% if user.role = 'admin' %}selected{% endif %}>Admin</option>
+                    <option value="superadmin" {% if user.role = 'superadmin' %}selected{% endif %}>Superadmin</option>
+                </select>
+            </div>
+            <button type="submit">Update</button>
+        </form>
+    </div>
+</body>
+</html>

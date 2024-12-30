@@ -5,8 +5,10 @@
 }
 body {
     font-family: Arial, sans-serif;
-    background-image: url('../image/bg.jpg');
+    background-image: url('/static/image/bg.jpg');
     background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -73,6 +75,7 @@ input {
     border-radius: 6px;
     width: 100%;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: #fff;
 }
 input:focus {
     border-color: #007BFF;
@@ -103,7 +106,6 @@ button[type="submit"]:hover {
     background-color: #218838;
     transform: scale(1.02);
 }
-
 .role-selection {
     display: flex;
     flex-direction: column;
@@ -121,6 +123,7 @@ button[type="submit"]:hover {
     border-radius: 6px;
     width: 100%;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: #fff;
 }
 .role-selection select:focus {
     border-color: #007BFF;

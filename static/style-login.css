@@ -5,7 +5,7 @@
 }
 body {
     font-family: Arial, sans-serif;
-    background-image: url('../image/bg.jpg');
+    background-image: url('/static/image/bg.jpg');
     background-size: cover;
     display: flex;
     justify-content: center;
@@ -100,10 +100,10 @@ button[type="submit"]:hover {
     transform: scale(1.02);
 }
 .register-btn {
-    background-color: #28A745;
+    background-color: #ba2d2d;
 }
 .register-btn:hover {
-    background-color: #218838;
+    background-color: #882121;
     transform: scale(1.02);
 }
 
@@ -131,3 +131,4 @@ button[type="submit"]:hover {
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
     outline: none;
 }
+
