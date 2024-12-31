@@ -18,8 +18,8 @@
             <div class="role-selection">
                 <label for="role">Pilih Role Baru:</label>
                 <select name="role" id="role" required>
-                    <option value="admin" {% if user.role = 'admin' %}selected{% endif %}>Admin</option>
-                    <option value="superadmin" {% if user.role = 'superadmin' %}selected{% endif %}>Superadmin</option>
+                    <option value="admin" {% if user.role == 'admin' %}selected{% endif %}>Admin</option>
+                    <option value="superadmin" {% if user.role == 'superadmin' %}selected{% endif %}>Superadmin</option>
                 </select>
             </div>
             <button type="submit">Update</button>

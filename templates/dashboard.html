@@ -7,15 +7,13 @@
     <link rel="stylesheet" href="../static/style-dashboard.css">
     <link rel="icon" href="../image/logo.png" type="image/png">
     <script>
-        // Fungsi untuk meminta konfirmasi sebelum logout
         function confirmLogout(event) {
             const confirmation = confirm("Apakah Anda yakin ingin logout?");
             if (!confirmation) {
-                event.preventDefault(); // Batalkan logout jika pengguna memilih 'Cancel'
+                event.preventDefault(); 
             }
         }
 
-        // Fungsi untuk memfilter pengguna berdasarkan input pencarian
         function filterUsers() {
             const searchInput = document.getElementById("search-bar").value.toLowerCase();
             const table = document.querySelector("table tbody");
@@ -26,44 +24,32 @@
                 const username = usernameCell.textContent.toLowerCase();
 
                 if (username.includes(searchInput)) {
-                    rows[i].style.display = ""; // Tampilkan baris jika cocok
+                    rows[i].style.display = ""; 
                 } else {
-                    rows[i].style.display = "none"; // Sembunyikan baris jika tidak cocok
+                    rows[i].style.display = "none"; 
                 }
             }
         }
     </script>
 </head>
 <body>
-    <!-- Sidebar -->
     <div class="mp">
-        <!-- Kotak untuk menampilkan username -->
         <input type="text" id="username-display" value="{{ session['username'] }}" disabled>
-
-        <!-- Tombol Dashboard -->
         <input type="text" id="dashboard-display" value="Dashboard" readonly>
-
-        <!-- Tombol Logout -->
         <form action="{{ url_for('logout') }}" method="GET" style="display:inline;" onsubmit="confirmLogout(event)">
             <button type="submit" id="logout-btn">Logout</button>
         </form>
     </div>
-
-    <!-- Konten Utama -->
     <div class="main">
-        <!-- Ucapan Sambutan -->
         <div class="welcome-message">
             <h2>Hi, {{ session['username'] }}</h2>
             <p>SELAMAT DATANG DIMANAJEMEN PENGGUNA</p>
         </div>
         <h1>Dashboard</h1>
-
-        <!-- Form Pencarian -->
         <div class="search-container">
             <input type="text" id="search-bar" placeholder="Cari pengguna..." onkeyup="filterUsers()">
         </div>
 
-        <!-- Tombol Tambah Pengguna -->
         {% if session['role'] == 'superadmin' %}
         <div class="actions">
             <form action="{{ url_for('tambah') }}" method="GET" style="display:inline;">
@@ -72,7 +58,6 @@
         </div>
         {% endif %}
 
-        <!-- Kontainer Tabel Scrollable -->
         <div class="table-container">
             <table>
                 <thead>
@@ -87,18 +72,14 @@
                 <tbody>
                     {% for user in users %}
                     <tr>
-                        <!-- Menggunakan forloop.counter untuk nomor urut -->
                         <td>{{ loop.index }}</td>
                         <td>{{ user.username }}</td>
                         <td>{{ user.email }}</td>
                         <td>{{ user.role }}</td>
                         <td class="actions">
-                            <!-- Tombol Edit -->
                             <form action="{{ url_for('edit', id=user.id) }}" method="GET" style="display:inline;">
                                 <button type="submit" class="edit">Edit</button>
                             </form>
-            
-                            <!-- Tombol Hapus -->
                             {% if session['role'] == 'superadmin' %}
                             <form action="{{ url_for('delete_user', id=user.id) }}" method="POST" style="display:inline;">
                                 <button type="submit" class="delete">Hapus</button>
