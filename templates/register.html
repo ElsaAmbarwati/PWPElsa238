@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style-register.css') }}">
-    <link rel="icon" href="../image/logo.png" type="image/png">
+    <link rel="icon" href="{{ url_for('static', filename='image/logo.png') }}" type="image/png">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
 </head>
 <body>
@@ -15,10 +15,11 @@
         <form method="POST" action="{{ url_for('register') }}" autocomplete="off">
             <input type="text" name="dummy_username" style="display: none;">
             <input type="password" name="dummy_password" style="display: none;">
-            <input type="text" name="data_user" id="data_user" placeholder="Username" autocomplete="off" required>
-            <input type="email" name="user_email" id="user_email" placeholder="Email" autocomplete="off" required>
-            <input type="password" name="user_pass" id="user_pass" placeholder="Password" autocomplete="new-password" required>
-            <input type="password" name="confirm_pass" id="confirm_pass" placeholder="Konfirmasi Password" autocomplete="new-password" required>
+
+            <input type="text" name="username" id="username" placeholder="Username" autocomplete="off" required>
+            <input type="email" name="email" id="email" placeholder="Email" autocomplete="off" required>
+            <input type="password" name="password" id="password" placeholder="Password" autocomplete="new-password" required>
+
             <div class="role-selection">
                 <label for="role">Pilih Role:</label>
                 <select name="role" id="role" required>
@@ -29,7 +30,7 @@
             <button type="submit">Daftar</button>
             <h4>-OR-</h4>
             <button type="button" class="register-btn" onclick="navigateToLogin()">Sudah Punya Akun?</button>
-         </form>               
+        </form>               
     </div>
     <script>
         function navigateToLogin() {

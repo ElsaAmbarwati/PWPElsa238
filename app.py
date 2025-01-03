@@ -65,7 +65,7 @@ def login():
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
-        username = request.form['data-username']
+        username = request.form['username']
         role = request.form['role']
         email = request.form['email']
         password = request.form['password']
@@ -77,7 +77,7 @@ def register():
             db.session.add(new_user)
             db.session.commit()
             flash('Registrasi berhasil! Silakan login.', 'success')
-            return redirect(url_for('dashboard'))
+            return redirect(url_for('login'))
         except Exception as e:
             flash('Registrasi gagal. Email atau username sudah digunakan.', 'error')
 
@@ -128,18 +128,23 @@ def edit(id):
 
     user = User.query.get_or_404(id)
     if request.method == 'POST':
-        user.username = request.form['username']
-        user.role = request.form['role']
-        user.email = request.form['email']
+        new_username = request.form['username']
+        new_role = request.form['role']
+
+        # Update data pengguna
+        user.username = new_username
+        user.role = new_role
 
         try:
-            db.session.commit()
+            db.session.commit() 
             flash('Pengguna berhasil diperbarui.', 'success')
             return redirect(url_for('dashboard'))
         except Exception as e:
             flash('Gagal memperbarui pengguna.', 'error')
+            db.session.rollback()  
 
     return render_template('edit.html', user=user)
+
 
 # Rute Hapus
 @app.route('/delete_user/<int:id>', methods=['POST'])
